@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Gaadi Kab Aayegi? | गाड़ी कब आएगी? - Live Bus, Auto & Taxi Tracker East Champaran</title>
+  
+  <!-- SEO & Open Graph Meta Tags -->
+  <meta name="description" content="पूर्वी चंपारण (मोतिहारी, बेतिया, छतौनी, सिंघिया, छपवा) में बस, ऑटो और टैक्सी का लाइव इंतजार समय जानें। Local public transit app for East Champaran, Bihar." />
+  <meta name="keywords" content="Gaadi Kab Aayegi, Motihari bus timing, Bettiah auto tracker, Chatauni to Bettiah bus, Bihar public transport app, East Champaran" />
+  <meta name="author" content="Gaadi Kab Aayegi Team" />
+  
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gaadi Kab Aayegi? | पूर्वी चंपारण का अपना बस-ऑटो ट्रैकर" />
+  <meta property="og:description" content="अब स्टॉप पर बिना वजह इंतजार नहीं! मोतिहारी, छतौनी, सिंघिया, छपवा और बेतिया रूट पर गाड़ी का सही समय फोन पर देखें।" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&auto=format&fit=crop&q=80" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gaadi Kab Aayegi? - Bihar Local Transport App" />
+  <meta name="twitter:description" content="Live arrival time for local buses, autos and shared taxis in East Champaran." />
+
+  <!-- Favicon (Inline SVG Data URI) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F766E'/%3E%3Cpath d='M8 18V11a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7m-16 0h16m-16 0a2 2 0 0 0-2 2v2h2m16-4a2 2 0 0 1 2 2v2h-2m-14 2h12' stroke='%23F59E0B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='11' cy='22' r='2' fill='%23FFFFFF'/%3E%3Ccircle cx='21' cy='22' r='2' fill='%23FFFFFF'/%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Mukta (Devanagari) & Poppins (Latin) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#0F766E',        // Deep Teal
+              tealDark: '#0D5E58',
+              tealLight: '#14B8A6',
+              tealSurface: '#F0FDFA',
+              saffron: '#F59E0B',     // Saffron Accent
+              saffronDark: '#D97706',
+              saffronLight: '#FEF3C7',
+              slateDark: '#1E293B',
+              slateMuted: '#64748B'
+            }
+          },
+          fontFamily: {
+            hindi: ['Mukta', 'sans-serif'],
+            sans: ['Poppins', 'Mukta', 'sans-serif'],
+          },
+          keyframes: {
+            pulseSlow: {
+              '0%, 100%': { opacity: 1 },
+              '50%': { opacity: .4 },
+            },
+            pingSmall: {
+              '0%': { transform: 'scale(1)', opacity: '1' },
+              '100%': { transform: 'scale(1.8)', opacity: '0' }
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulseSlow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'ping-slow': 'pingSmall 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Mobile-first optimizations and touch targets */
+    * { -webkit-tap-highlight-color: transparent; }
+    html { font-size: 16px; }
+    @media (max-width: 380px) {
+      html { font-size: 15px; }
+    }
+    .min-touch { min-height: 48px; min-width: 48px; }
+    .focus-ring:focus-visible {
+      outline: 3px solid #F59E0B;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-brand-slateDark font-sans antialiased selection:bg-brand-saffronLight selection:text-brand-slateDark">
+
+  <!-- ========================================================
+       1. STICKY NAVBAR
+       ======================================================== -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-2">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2.5 group focus-ring rounded-lg py-1" aria-label="Gaadi Kab Aayegi Home">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-brand-teal flex items-center justify-center text-brand-saffron shadow-sm group-hover:scale-105 transition-transform">
+          <!-- Bus Front Icon -->
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-extrabold text-lg sm:text-xl tracking-tight text-brand-teal font-hindi leading-tight">गाड़ी कब आएगी?</span>
+          </div>
+          <span class="block text-[10px] sm:text-xs text-brand-slateMuted font-medium uppercase tracking-wider">East Champaran • पूर्वी चंपारण</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-700">
+        <a href="#how-it-works" class="hover:text-brand-teal transition-colors focus-ring rounded py-1 px-2" data-hi="यह कैसे काम करता है" data-en="How It Works">यह कैसे काम करता है</a>
+        <a href="#for-drivers" class="hover:text-brand-teal transition-colors focus-ring rounded py-1 px-2" data-hi="ड्राइवर भाईयों के लिए" data-en="For Drivers">ड्राइवर भाईयों के लिए</a>
+        <a href="#routes" class="hover:text-brand-teal transition-colors focus-ring rounded py-1 px-2" data-hi="चालू रूट" data-en="Pilot Routes">चालू रूट</a>
+        <a href="#faq" class="hover:text-brand-teal transition-colors focus-ring rounded py-1 px-2" data-hi="सवाल-जवाब" data-en="FAQ">सवाल-जवाब</a>
+      </nav>
+
+      <!-- Language Toggle & CTA Button -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Language Switcher Pill -->
+        <button id="lang-toggle-btn" type="button" class="min-touch inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-full bg-slate-100 border border-slate-300 text-slate-800 hover:bg-slate-200 transition-all focus-ring" title="भाषा बदलें / Change Language" aria-label="Toggle language between Hindi and English">
+          <svg class="w-4 h-4 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+          </svg>
+          <span id="lang-label" class="font-bold">English</span>
+        </button>
+
+        <!-- Get the App CTA -->
+        <a href="#download" class="min-touch inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-brand-teal hover:bg-brand-tealDark text-white text-xs sm:text-sm font-bold shadow-sm transition-all focus-ring active:scale-95">
+          <span data-hi="ऐप पाएं" data-en="Get App">ऐप पाएं</span>
+          <svg class="w-4 h-4 ml-1.5 hidden sm:inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================================
+         2. HERO SECTION
+         ======================================================== -->
+    <section class="relative bg-gradient-to-b from-brand-tealSurface via-white to-slate-50 pt-8 sm:pt-14 pb-14 sm:pb-20 overflow-hidden">
+      <!-- Decorative background glow -->
+      <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-tealLight/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          
+          <!-- Hero Text Content -->
+          <div class="lg:col-span-7 text-center lg:text-left space-y-5">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100/90 border border-amber-300 text-amber-900 text-xs sm:text-sm font-semibold shadow-2xs">
+              <span class="w-2 h-2 rounded-full bg-brand-saffron animate-ping-slow"></span>
+              <span data-hi="मोतिहारी • बेतिया • छतौनी • सिंघिया • छपवा" data-en="Pilot corridor: Motihari • Bettiah • Chatauni • Singhia • Chapwa">मोतिहारी • बेतिया • छतौनी • सिंघिया • छपवा</span>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.25] font-hindi">
+              <span data-hi="गाड़ी कब आएगी?" data-en="When is the ride coming?">गाड़ी कब आएगी?</span><br />
+              <span class="text-brand-teal" data-hi="अब घर बैठे पता चलेगा।" data-en="Now find out instantly.">अब घर बैठे पता चलेगा।</span>
+            </h1>
+
+            <!-- English & Hindi Subtitle -->
+            <p class="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+              <span class="block text-slate-800 font-semibold text-lg" data-hi="बस, शेयरिंग ऑटो या टैक्सी के लिए स्टॉप पर बेवजह इंतज़ार बंद।" data-en="No more guessing at bus stands in sun, rain or cold.">बस, शेयरिंग ऑटो या टैक्सी के लिए स्टॉप पर बेवजह इंतज़ार बंद।</span>
+              <span class="text-slate-500 text-sm sm:text-base mt-1 block" data-hi="Know your bus, shared auto, or taxi waiting time live on your mobile." data-en="Know your bus, shared auto, or taxi waiting time live on your mobile.">Know your bus, shared auto, or taxi waiting time live on your mobile.</span>
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3.5">
+              <a href="#download" class="min-touch inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-brand-teal text-white font-bold text-base shadow-md hover:bg-brand-tealDark transition-all focus-ring active:scale-98">
+                <!-- Google Play SVG -->
+                <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3.609 1.814L13.792 12 3.61 22.186a1.94 1.94 0 0 1-.61-1.427V3.241c0-.547.224-1.05.609-1.427zm11.3 11.3l2.25 2.25-11.83 6.83 9.58-9.08zm0-2.228L5.33 1.806l11.83 6.83-2.251 2.25zM17.87 11.23l2.67 1.54a.89.89 0 0 1 0 1.54l-2.67 1.54-1.89-1.89 1.89-1.19z"/>
+                </svg>
+                <div class="text-left leading-tight">
+                  <div class="text-[10px] uppercase tracking-wider text-teal-100" data-hi="डाउनलोड करें" data-en="Download on">डाउनलोड करें</div>
+                  <div class="text-sm font-extrabold" data-hi="गूगल प्ले स्टोर से" data-en="Google Play Store">गूगल प्ले स्टोर से</div>
+                </div>
+              </a>
+
+              <a href="#driver-signup" class="min-touch inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-brand-saffronDark text-slate-950 font-bold text-base shadow-sm transition-all focus-ring active:scale-98">
+                <!-- Steering wheel / User badge icon -->
+                <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" stroke-width="2"/>
+                  <circle cx="12" cy="12" r="3" stroke-width="2"/>
+                  <path stroke-linecap="round" stroke-width="2" d="M12 3v6m0 6v6m-9-9h6m6 0h6"/>
+                </svg>
+                <span data-hi="मैं ड्राइवर हूँ (पंजीकरण करें)" data-en="I am a Driver (Sign Up)">मैं ड्राइवर हूँ (पंजीकरण करें)</span>
+              </a>
+            </div>
+
+            <!-- Fast stats row -->
+            <div class="pt-4 grid grid-cols-3 gap-3 border-t border-slate-200/80 max-w-md mx-auto lg:mx-0 text-center">
+              <div>
+                <p class="text-xl sm:text-2xl font-black text-brand-teal">100%</p>
+                <p class="text-xs text-slate-500 font-medium" data-hi="मुफ्त यात्रियों के लिए" data-en="Free for Passengers">यात्रियों के लिए फ्री</p>
+              </div>
+              <div>
+                <p class="text-xl sm:text-2xl font-black text-brand-teal">2G / 3G</p>
+                <p class="text-xs text-slate-500 font-medium" data-hi="धीमे नेट पर भी चालू" data-en="Works on Slow Net">धीमे नेट पर चालू</p>
+              </div>
+              <div>
+                <p class="text-xl sm:text-2xl font-black text-brand-teal">&lt; 5MB</p>
+                <p class="text-xs text-slate-500 font-medium" data-hi="छोटा हल्का ऐप" data-en="Lightweight App">छोटा हल्का ऐप</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Hero Phone Mockup -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-[320px] sm:max-w-[340px]">
+              
+              <!-- Subtle Phone Outer Frame -->
+              <div class="relative bg-slate-900 rounded-[2.5rem] p-3 shadow-2xl border-4 border-slate-700/60 ring-1 ring-black/10">
+                <!-- Speaker notch -->
+                <div class="absolute top-5 left-1/2 -translate-x-1/2 w-20 h-4 bg-slate-800 rounded-full z-20 flex items-center justify-center">
+                  <div class="w-2.5 h-2.5 rounded-full bg-slate-700 mr-2"></div>
+                  <div class="w-8 h-1.5 rounded-full bg-slate-700"></div>
+                </div>
+
+                <!-- Phone Screen -->
+                <div class="bg-white rounded-[2rem] pt-7 pb-5 px-3.5 overflow-hidden text-slate-900 shadow-inner">
+                  
+                  <!-- App Header inside phone -->
+                  <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                    <div class="flex items-center gap-1.5">
+                      <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      <span class="text-xs font-bold text-slate-800" data-hi="सिंघिया चौक (Singhia)" data-en="Singhia Chowk">सिंघिया चौक (Singhia)</span>
+                    </div>
+                    <span class="text-[10px] bg-teal-50 text-brand-teal px-2 py-0.5 rounded-full font-bold">LIVE GPS</span>
+                  </div>
+
+                  <!-- Live Transit Cards inside Mockup -->
+                  <div class="mt-3.5 space-y-2.5">
+                    
+                    <!-- Card 1: Bus -->
+                    <div class="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200 shadow-2xs hover:border-brand-teal transition-colors">
+                      <div class="flex items-start justify-between">
+                        <div class="flex items-center gap-2">
+                          <span class="text-lg" aria-hidden="true">🚌</span>
+                          <div>
+                            <div class="flex items-center gap-1.5">
+                              <span class="font-bold text-xs text-slate-900" data-hi="बस (छतौनी से बेतिया)" data-en="Bus (Chatauni to Bettiah)">बस (छतौनी से बेतिया)</span>
+                            </div>
+                            <span class="text-[10px] text-slate-500 font-medium">चंपारण ट्रेवल्स • BR-05 4412</span>
+                          </div>
+                        </div>
+                        <div class="text-right">
+                          <span class="block text-sm font-black text-brand-teal font-sans">12 min</span>
+                          <span class="text-[9px] font-bold text-emerald-700 bg-emerald-100/80 px-1.5 py-0.2 rounded" data-hi="6 सीट खाली" data-en="6 seats left">6 सीट खाली</span>
+                        </div>
+                      </div>
+                      <!-- Progress miniature -->
+                      <div class="mt-2.5 flex items-center gap-1.5 text-[9px] text-slate-500">
+                        <span class="font-semibold text-slate-700">छतौनी</span>
+                        <div class="flex-1 h-1 bg-slate-200 rounded-full overflow-hidden">
+                          <div class="w-3/5 h-full bg-brand-teal rounded-full"></div>
+                        </div>
+                        <span class="font-bold text-brand-teal">सिंघिया (आपका स्टॉप)</span>
+                      </div>
+                    </div>
+
+                    <!-- Card 2: Shared Auto -->
+                    <div class="p-3 rounded-xl bg-amber-50/70 border border-amber-200 shadow-2xs">
+                      <div class="flex items-start justify-between">
+                        <div class="flex items-center gap-2">
+                          <span class="text-lg" aria-hidden="true">🛺</span>
+                          <div>
+                            <div class="font-bold text-xs text-slate-900" data-hi="शेयरिंग ऑटो (छपवा की ओर)" data-en="Shared Auto (towards Chapwa)">शेयरिंग ऑटो (छपवा की ओर)</div>
+                            <span class="text-[10px] text-slate-500 font-medium">रमेश राय • BR-05 A 7801</span>
+                          </div>
+                        </div>
+                        <div class="text-right">
+                          <span class="block text-sm font-black text-amber-700 font-sans">5 min</span>
+                          <span class="text-[9px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.2 rounded" data-hi="2 सीट बाकी" data-en="2 seats left">2 सीट बाकी</span>
+                        </div>
+                      </div>
+                      <div class="mt-2 flex items-center justify-between text-[10px] text-slate-600 font-medium">
+                        <span>किराया: ₹15</span>
+                        <span class="text-emerald-700 font-bold">● तुरन्त आ रही है</span>
+                      </div>
+                    </div>
+
+                    <!-- Card 3: Taxi / Commander / Bolero -->
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 shadow-2xs">
+                      <div class="flex items-start justify-between">
+                        <div class="flex items-center gap-2">
+                          <span class="text-lg" aria-hidden="true">🚕</span>
+                          <div>
+                            <div class="font-bold text-xs text-slate-900" data-hi="टैक्सी / बोलेरो (मोतिहारी)" data-en="Taxi / Bolero (Motihari)">टैक्सी / बोलेरो (मोतिहारी)</div>
+                            <span class="text-[10px] text-slate-500 font-medium">शेयरिंग जीप • वाया छतौनी</span>
+                          </div>
+                        </div>
+                        <div class="text-right">
+                          <span class="block text-sm font-black text-slate-800 font-sans">3 min</span>
+                          <span class="text-[9px] font-bold text-emerald-800 bg-emerald-100 px-1.5 py-0.2 rounded" data-hi="सीट उपलब्ध" data-en="Seats avail.">सीट उपलब्ध</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- In-app simulated alert banner -->
+                  <div class="mt-3 p-2 bg-teal-800 text-white rounded-lg flex items-center gap-2 text-[10px]">
+                    <span class="flex-shrink-0">🔔</span>
+                    <span class="leading-tight font-medium" data-hi="छतौनी वाली बस 2 किमी दूर है। स्टॉप पर पहुंचे।" data-en="Bus from Chatauni is 2 km away. Head to the stop.">छतौनी वाली बस 2 किमी दूर है। स्टॉप पर पहुंचे।</span>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Floating badge under phone -->
+              <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white px-4 py-1.5 rounded-full shadow-lg border border-slate-200 flex items-center gap-2 text-xs font-bold text-slate-700 whitespace-nowrap">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span data-hi="हर 15 सेकंड में ऑटो-अपडेट" data-en="Auto-refreshes every 15s">हर 15 सेकंड में ऑटो-अपडेट</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         3. PROBLEM STRIP
+         ======================================================== -->
+    <section class="py-12 bg-white border-y border-slate-200">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 font-hindi" data-hi="रोज-रोज स्टॉप पर ये परेशानियां क्यों झेलना?" data-en="Why suffer these daily commute problems?">
+            रोज-रोज स्टॉप पर ये परेशानियां क्यों झेलना?
+          </h2>
+          <p class="text-slate-500 text-xs sm:text-sm mt-1" data-hi="बिहार के छोटे शहरों और ग्रामीण यात्रियों का रोज का दर्द" data-en="The everyday struggle of local travelers in East Champaran">
+            बिहार के छोटे शहरों और ग्रामीण यात्रियों का रोज का दर्द
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Problem 1 -->
+          <div class="p-5 rounded-2xl bg-rose-50/60 border border-rose-100 flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center flex-shrink-0 text-2xl">
+              ⏳
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-base" data-hi="धूप और ठंड में घंटों इंतजार" data-en="Waiting without knowing">धूप और ठंड में घंटों इंतजार</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1" data-hi="पता ही नहीं होता कि अगली गाड़ी 5 मिनट में आएगी या 1 घंटे बाद। समय की बर्बादी होती है।" data-en="Standing blindly for an hour not knowing if the next auto or bus is just 2 km away or cancelled.">पता ही नहीं होता कि अगली गाड़ी 5 मिनट में आएगी या 1 घंटे बाद। समय की बर्बादी होती है।</p>
+            </div>
+          </div>
+
+          <!-- Problem 2 -->
+          <div class="p-5 rounded-2xl bg-amber-50/60 border border-amber-100 flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center flex-shrink-0 text-2xl">
+              🏃
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-base" data-hi="गाड़ी छूटने और लेट होने का डर" data-en="Missed rides and urgent delays">गाड़ी छूटने और लेट होने का डर</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1" data-hi="छात्रों की परीक्षा, कोर्ट की तारीख या अस्पताल की पर्ची—गाड़ी छूटने से भारी नुकसान होता है।" data-en="Students miss exam timings, patients get delayed at Motihari hospital, farmers miss market hours.">छात्रों की परीक्षा, कोर्ट की तारीख या अस्पताल की पर्ची—गाड़ी छूटने से भारी नुकसान होता है।</p>
+            </div>
+          </div>
+
+          <!-- Problem 3 -->
+          <div class="p-5 rounded-2xl bg-slate-100/80 border border-slate-200 flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-slate-200 text-slate-700 flex items-center justify-center flex-shrink-0 text-2xl">
+              💸
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-base" data-hi="मजबूरी में महंगा रिजर्व भाड़ा" data-en="Paying extra for private rides">मजबूरी में महंगा रिजर्व भाड़ा</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1" data-hi="जब शेयरिंग साधन का पता नहीं चलता तो लोग 15 रुपये के सफर के लिए 200 रुपये का रिजर्व ऑटो लेते हैं।" data-en="Desperate travelers hire expensive private rides because they didn't know a bus was 5 mins behind.">जब शेयरिंग साधन का पता नहीं चलता तो लोग ₹15 के सफर के लिए ₹200 का रिजर्व ऑटो लेते हैं।</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         4. HOW IT WORKS FOR TRAVELERS
+         ======================================================== -->
+    <section id="how-it-works" class="py-14 sm:py-20 bg-slate-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-brand-teal bg-teal-50 px-3 py-1 rounded-full border border-teal-200" data-hi="यात्रियों के लिए आसान 3 कदम" data-en="For Daily Commuters">यात्रियों के लिए आसान 3 कदम</span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 font-hindi" data-hi="गाड़ी देखना अब है पानी पीने जितना आसान" data-en="Tracking rides is as simple as 1-2-3">
+            गाड़ी देखना अब है पानी पीने जितना आसान
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base mt-2" data-hi="बुजुर्ग, छात्र और किसान—हर कोई बिना परेशानी इस्तेमाल कर सकता है।" data-en="No complicated maps. Works for everyone on simple phones.">
+            बुजुर्ग, छात्र और किसान—हर कोई बिना परेशानी इस्तेमाल कर सकता है।
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          
+          <!-- Step 1 -->
+          <div class="bg-white p-6 sm:p-7 rounded-2xl shadow-xs border border-slate-200/80 text-center flex flex-col items-center">
+            <div class="w-14 h-14 rounded-2xl bg-teal-50 text-brand-teal flex items-center justify-center font-black text-xl mb-4 border border-teal-100">
+              1
+            </div>
+            <div class="w-12 h-12 mb-3 text-brand-teal flex items-center justify-center">
+              <!-- Location pin search SVG -->
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 font-hindi" data-hi="अपना नजदीकी स्टॉप चुनें" data-en="Choose Your Stop">अपना नजदीकी स्टॉप चुनें</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-hi="ऐप खोलें और अपना चौक या स्टॉप चुनें (जैसे सिंघिया, छतौनी या छपवा)। जीपीएस से अपने आप भी चुन सकते हैं।" data-en="Open the app and pick your local stop. GPS can also detect your stop automatically in 1 tap.">
+              ऐप खोलें और अपना चौक या स्टॉप चुनें (जैसे सिंघिया, छतौनी या छपवा)। जीपीएस से अपने आप भी चुन सकते हैं।
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="bg-white p-6 sm:p-7 rounded-2xl shadow-xs border border-slate-200/80 text-center flex flex-col items-center">
+            <div class="w-14 h-14 rounded-2xl bg-amber-50 text-brand-saffronDark flex items-center justify-center font-black text-xl mb-4 border border-amber-200">
+              2
+            </div>
+            <div class="w-12 h-12 mb-3 text-brand-saffronDark flex items-center justify-center">
+              <!-- Clock / ETA SVG -->
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 font-hindi" data-hi="आती हुई गाड़ियां और समय देखें" data-en="See Vehicles & ETA">आती हुई गाड़ियां और समय देखें</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-hi="साफ-साफ दिखेगा: कौन सी बस या ऑटो कितने मिनट में आपके पास पहुंचेगा और उसमें सीट खाली है या नहीं।" data-en="Get exact minutes remaining for approaching buses and shared autos with seat indicators.">
+              साफ-साफ दिखेगा: कौन सी बस या ऑटो कितने मिनट में आपके पास पहुंचेगा और उसमें सीट खाली है या नहीं।
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="bg-white p-6 sm:p-7 rounded-2xl shadow-xs border border-slate-200/80 text-center flex flex-col items-center">
+            <div class="w-14 h-14 rounded-2xl bg-teal-50 text-brand-teal flex items-center justify-center font-black text-xl mb-4 border border-teal-100">
+              3
+            </div>
+            <div class="w-12 h-12 mb-3 text-brand-teal flex items-center justify-center">
+              <!-- Notification bell board SVG -->
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 font-hindi" data-hi="अलर्ट पाएं और समय पर बैठें" data-en="Get Alert & Board">अलर्ट पाएं और समय पर बैठें</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-hi="गाड़ी 1 किमी दूर आते ही मोबाइल पर घंटी बजेगी। घर या दुकान से तभी निकलें जब गाड़ी पास हो।" data-en="Receive a ring or vibration alert when your ride is 1 km away. Reach the stop just on time.">
+              गाड़ी 1 किमी दूर आते ही मोबाइल पर घंटी बजेगी। घर या दुकान से तभी निकलें जब गाड़ी पास हो।
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         5. HOW IT WORKS FOR DRIVERS
+         ======================================================== -->
+    <section id="for-drivers" class="py-14 sm:py-20 bg-brand-slateDark text-white relative overflow-hidden">
+      <!-- Background accent -->
+      <div class="absolute -right-24 -bottom-24 w-80 h-80 bg-brand-teal/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div>
+            <span class="text-xs font-black tracking-widest uppercase text-brand-saffron bg-brand-saffron/10 border border-brand-saffron/30 px-3 py-1 rounded-full" data-hi="चालक और मालिक भाइयों के लिए" data-en="For Bus, Auto & Taxi Drivers">चालक और मालिक भाइयों के लिए</span>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-3 font-hindi" data-hi="गाड़ी खाली नहीं दौड़ेगी, हर चक्कर में ज्यादा कमाई" data-en="No empty runs. More passengers on every single trip.">
+              गाड़ी खाली नहीं दौड़ेगी, हर चक्कर में ज्यादा कमाई
+            </h2>
+          </div>
+          <div class="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold">
+            <span>⚡</span>
+            <span data-hi="शुरू करने में 10 सेकंड से भी कम समय!" data-en="Takes less than 10 seconds!">शुरू करने में 10 सेकंड से भी कम समय!</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Driver Step 1 -->
+          <div class="bg-slate-800/90 border border-slate-700 p-6 rounded-2xl relative">
+            <span class="text-3xl font-black text-brand-saffron mb-3 block">01</span>
+            <h3 class="text-lg font-bold text-white font-hindi" data-hi="मोबाइल OTP से तुरंत लॉगिन" data-en="Login with Mobile OTP">मोबाइल OTP से तुरंत लॉगिन</h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-2" data-hi="कोई कठिन कागजी काम नहीं। सिर्फ अपना मोबाइल नंबर डालें और ओटीपी डालकर तुरंत चालू करें।" data-en="No complicated paperwork. Just enter your phone number and verify OTP in 5 seconds.">
+              कोई कठिन कागजी काम नहीं। सिर्फ अपना मोबाइल नंबर डालें और ओटीपी डालकर तुरंत चालू करें।
+            </p>
+          </div>
+
+          <!-- Driver Step 2 -->
+          <div class="bg-slate-800/90 border border-brand-teal p-6 rounded-2xl relative ring-2 ring-brand-teal/40">
+            <span class="text-3xl font-black text-brand-tealLight mb-3 block">02</span>
+            <h3 class="text-lg font-bold text-white font-hindi" data-hi="सिर्फ 'Start Trip' का बटन दबाएं" data-en="Tap 'Start Trip' Button">सिर्फ 'Start Trip' का बटन दबाएं</h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-2" data-hi="जैसे ही छतौनी स्टैंड से बेतिया या मोतिहारी के लिए चलें, एक हरा बटन दबाएं। आपका काम खत्म!" data-en="When leaving Chatauni stand towards Bettiah or Motihari, tap the big green button. Done!">
+              जैसे ही छतौनी स्टैंड से बेतिया या मोतिहारी के लिए चलें, एक हरा बटन दबाएं। आपका काम खत्म!
+            </p>
+          </div>
+
+          <!-- Driver Step 3 -->
+          <div class="bg-slate-800/90 border border-slate-700 p-6 rounded-2xl relative">
+            <span class="text-3xl font-black text-brand-saffron mb-3 block">03</span>
+            <h3 class="text-lg font-bold text-white font-hindi" data-hi="रास्ते के स्टॉप्स पर भरी सवारियां पाएं" data-en="Fill Empty Seats at Every Stop">रास्ते के स्टॉप्स पर भरी सवारियां पाएं</h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-2" data-hi="सिंघिया, पिपरा, छपवा पर लोग आपका इंतजार करते मिलेंगे। हॉर्न बजाने और सवारी ढूंढने का झंझट खत्म।" data-en="Passengers at Singhia and Chapwa already know you're coming and wait ready to board.">
+              सिंघिया, पिपरा, छपवा पर लोग आपका इंतजार करते मिलेंगे। हॉर्न बजाने और सवारी ढूंढने का झंझट खत्म।
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Driver Testimonial Callout -->
+        <div class="mt-10 p-5 rounded-2xl bg-slate-800/60 border border-slate-700/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-brand-saffron text-slate-900 font-bold flex items-center justify-center text-xl flex-shrink-0">
+              🛺
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm text-slate-200 italic" data-hi="“पहले खाली ऑटो दौड़ाना पड़ता था। अब यात्री पहले से खड़े रहते हैं।”" data-en="“Earlier I used to drive empty. Now travelers are already standing ready.”">“पहले छतौनी से खाली ऑटो दौड़ाना पड़ता था। अब सिंघिया-छपवा पर यात्री पहले से खड़े रहते हैं।”</p>
+              <p class="text-xs text-brand-saffron font-bold mt-0.5">— सुनील कुमार, ऑटो चालक (छतौनी-बेतिया रूट)</p>
+            </div>
+          </div>
+          <a href="#driver-signup" class="min-touch inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-brand-saffron text-slate-900 font-extrabold text-xs sm:text-sm hover:bg-amber-400 transition-colors whitespace-nowrap">
+            <span data-hi="अभी ड्राइवर जुड़ें" data-en="Join as Driver Now">अभी ड्राइवर जुड़ें</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         6. FEATURES GRID
+         ======================================================== -->
+    <section class="py-14 sm:py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-teal" data-hi="खासियतें" data-en="Smart Features">खासियतें</span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-1 font-hindi" data-hi="चंपारण की जरूरतों को ध्यान में रखकर बना ऐप" data-en="Tailored for Ground Realities of Champaran">
+            चंपारण की जरूरतों को ध्यान में रखकर बना ऐप
+          </h2>
+          <p class="text-slate-500 text-xs sm:text-sm mt-2" data-hi="धीमा इंटरनेट हो या पुराना फोन, सब पर दौड़ेगा मक्खन की तरह।" data-en="Works reliably even with spotty 2G networks and entry-level phones.">
+            धीमा इंटरनेट हो या पुराना फोन, सब पर दौड़ेगा मक्खन की तरह।
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Feature 1 -->
+          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-teal hover:shadow-xs transition-all">
+            <div class="w-12 h-12 rounded-xl bg-teal-100/70 text-brand-teal flex items-center justify-center text-2xl mb-4">
+              📡
+            </div>
+            <h3 class="font-bold text-slate-900 text-base" data-hi="लाइव जीपीएस ट्रैकिंग" data-en="Live GPS Tracking">लाइव जीपीएस ट्रैकिंग</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1.5" data-hi="देखें कि आपकी बस या ऑटो ठीक इस समय किस मोड़ पर या किस पेट्रोल पंप के पास है।" data-en="Know the exact spot of your bus or shared auto in real time on the local corridor.">
+              देखें कि आपकी बस या ऑटो ठीक इस समय किस मोड़ पर या किस पेट्रोल पंप के पास है।
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-teal hover:shadow-xs transition-all">
+            <div class="w-12 h-12 rounded-xl bg-amber-100/70 text-brand-saffronDark flex items-center justify-center text-2xl mb-4">
+              ⏱️
+            </div>
+            <h3 class="font-bold text-slate-900 text-base" data-hi="पहुंचने का सही समय (ETA)" data-en="Accurate Waiting ETA">पहुंचने का सही समय (ETA)</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1.5" data-hi="लोकल ट्रैफिक और स्पीड के हिसाब से सटीक मिनट का अंदाजा। बार-बार फोन लगाने की जरूरत नहीं।" data-en="Accurate minutes countdown adjusted for local traffic and railway crossings.">
+              लोकल ट्रैफिक और स्पीड के हिसाब से सटीक मिनट का अंदाजा। बार-बार फोन लगाने की जरूरत नहीं।
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-teal hover:shadow-xs transition-all">
+            <div class="w-12 h-12 rounded-xl bg-emerald-100/70 text-emerald-700 flex items-center justify-center text-2xl mb-4">
+              🪑
+            </div>
+            <h3 class="font-bold text-slate-900 text-base" data-hi="खाली सीट की जानकारी" data-en="Seat Availability Status">खाली सीट की जानकारी</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1.5" data-hi="पहले ही जान लें कि गाड़ी पूरी भरी है या सीट खाली मिलेगी, ताकि मरीज और महिलाओं को असुविधा न हो।" data-en="Get a quick indication if seats are available so elders and patients travel comfortably.">
+              पहले ही जान लें कि गाड़ी पूरी भरी है या सीट खाली मिलेगी, ताकि मरीज और महिलाओं को असुविधा न हो।
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-teal hover:shadow-xs transition-all">
+            <div class="w-12 h-12 rounded-xl bg-purple-100/70 text-purple-700 flex items-center justify-center text-2xl mb-4">
+              🔔
+            </div>
+            <h3 class="font-bold text-slate-900 text-base" data-hi="पहुंच अलर्ट और घंटी" data-en="Arrival Proximity Alerts">पहुंच अलर्ट और घंटी</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1.5" data-hi="अलर्ट सेट करें। गाड़ी जब आपके स्टॉप से 1-2 किमी दूर होगी, फोन आपको खुद अलर्ट कर देगा।" data-en="Set a reminder. Your phone sounds a chime when the ride reaches your preferred distance.">
+              अलर्ट सेट करें। गाड़ी जब आपके स्टॉप से 1-2 किमी दूर होगी, फोन आपको खुद अलर्ट कर देगा।
+            </p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-teal hover:shadow-xs transition-all">
+            <div class="w-12 h-12 rounded-xl bg-blue-100/70 text-blue-700 flex items-center justify-center text-2xl mb-4">
+              📶
+            </div>
+            <h3 class="font-bold text-slate-900 text-base" data-hi="धीमे 2G नेटवर्क पर भी तेज" data-en="Optimized for 2G / Slow Net">धीमे 2G नेटवर्क पर भी तेज</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1.5" data-hi="सुपर-लाइटवेट तकनीक! कमजोर सिग्नल और सस्ते 4G/2G फोन में भी बिना अटके चलता है।" data-en="Ultra low data consumption (less than 20KB per check) built for rural connectivity.">
+              सुपर-लाइटवेट तकनीक! कमजोर सिग्नल और सस्ते 4G/2G फोन में भी बिना अटके चलता है।
+            </p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-teal hover:shadow-xs transition-all">
+            <div class="w-12 h-12 rounded-xl bg-orange-100/70 text-orange-700 flex items-center justify-center text-2xl mb-4">
+              🗣️
+            </div>
+            <h3 class="font-bold text-slate-900 text-base" data-hi="सरल हिंदी और भोजपुरी सहज" data-en="Simple Hindi & Local Dialects">सरल हिंदी और भोजपुरी सहज</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1.5" data-hi="कोई अंग्रेजी की मजबूरी नहीं। बड़े-बड़े अक्षरों और साफ आवाजों के साथ हर गांववासी के अनुकूल।" data-en="Clean Devanagari typography, big legible buttons and voice-friendly instructions.">
+              कोई अंग्रेजी की मजबूरी नहीं। बड़े-बड़े अक्षरों और साफ आवाजों के साथ हर गांववासी के अनुकूल।
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         7. LIVE EXAMPLE CARD (Interactive visual)
+         ======================================================== -->
+    <section class="py-14 bg-gradient-to-br from-teal-900 to-brand-teal text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        
+        <div class="text-center mb-8">
+          <span class="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-semibold text-emerald-200 uppercase tracking-wider" data-hi="लाइव रूट उदाहरण" data-en="Live Route Simulation">लाइव रूट उदाहरण</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold mt-2 font-hindi" data-hi="सिंघिया से छपवा / बेतिया रूट पर अभी क्या चल रहा है?" data-en="Real-time look: Singhia to Chapwa corridor">
+            सिंघिया से छपवा / बेतिया रूट पर अभी क्या चल रहा है?
+          </h2>
+          <p class="text-teal-100 text-xs sm:text-sm mt-1" data-hi="देखिए ऐप में यह कितनी सरलता से दिखाई देता है" data-en="See how intuitively route status is displayed">देखिए ऐप में यह कितनी सरलता से दिखाई देता है</p>
+        </div>
+
+        <!-- Interactive Simulation Container -->
+        <div class="bg-white text-slate-900 rounded-3xl p-5 sm:p-7 shadow-2xl border border-white/20">
+          
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 gap-3">
+            <div>
+              <span class="text-xs font-bold text-brand-teal uppercase tracking-wider" data-hi="चुना गया स्टॉप" data-en="Selected Stop">चुना गया स्टॉप</span>
+              <h3 class="text-xl sm:text-2xl font-black text-slate-900 flex items-center gap-2">
+                <span>📍 सिंघिया चौक (Singhia)</span>
+              </h3>
+            </div>
+            <div class="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 px-3.5 py-1.5 rounded-full text-xs font-bold">
+              <span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
+              <span data-hi="लाइव सिग्नल सक्रिय" data-en="Live GPS Active">लाइव सिग्नल सक्रिय</span>
+            </div>
+          </div>
+
+          <!-- Approaching vehicle highlighted card -->
+          <div class="mt-5 p-4 rounded-2xl bg-amber-50 border border-amber-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-xl bg-amber-500 text-slate-950 font-black text-2xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                🚌
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-extrabold text-base text-slate-900" data-hi="बेतिया एक्सप्रेस डीलक्स" data-en="Bettiah Express Deluxe">बेतिया एक्सप्रेस डीलक्स</span>
+                  <span class="text-[10px] bg-amber-200 text-amber-950 px-2 py-0.5 rounded font-bold">बस</span>
+                </div>
+                <p class="text-xs text-slate-600 mt-0.5" data-hi="रूट: छतौनी ➔ सिंघिया ➔ छपवा ➔ बेतिया" data-en="Route: Chatauni ➔ Singhia ➔ Chapwa ➔ Bettiah">रूट: छतौनी ➔ सिंघिया ➔ छपवा ➔ बेतिया</p>
+              </div>
+            </div>
+            
+            <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-amber-200">
+              <div class="text-left sm:text-right">
+                <span class="text-xs text-slate-500 font-medium" data-hi="सिंघिया पहुंचने में" data-en="Arrives in">सिंघिया पहुंचने में</span>
+                <p id="live-eta-counter" class="text-2xl font-black text-brand-teal font-sans">8 मिनट</p>
+              </div>
+              <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full mt-1" data-hi="8 सीटें उपलब्ध" data-en="8 Seats Avail.">8 सीटें उपलब्ध</span>
+            </div>
+          </div>
+
+          <!-- Visual Route Step Progression -->
+          <div class="mt-6 pt-2">
+            <p class="text-xs font-bold text-slate-500 mb-4" data-hi="मार्ग स्थिति (Route Progress)" data-en="Route Progress">मार्ग स्थिति (Route Progress)</p>
+            
+            <div class="relative">
+              <!-- Background Connecting Line -->
+              <div class="absolute top-4 left-4 right-4 h-1 bg-slate-200 -z-0"></div>
+              <!-- Completed progress line -->
+              <div class="absolute top-4 left-4 w-1/3 sm:w-1/2 h-1 bg-brand-teal -z-0 transition-all duration-1000"></div>
+
+              <!-- Stops on the line -->
+              <div class="grid grid-cols-4 text-center relative z-10">
+                <!-- Stop 1 -->
+                <div class="flex flex-col items-center">
+                  <div class="w-8 h-8 rounded-full bg-brand-teal text-white flex items-center justify-center text-xs font-bold ring-4 ring-white">
+                    ✓
+                  </div>
+                  <span class="text-[11px] sm:text-xs font-bold mt-2 text-slate-700" data-hi="छतौनी" data-en="Chatauni">छतौनी</span>
+                  <span class="text-[9px] text-slate-400">रवाना हुई</span>
+                </div>
+
+                <!-- Stop 2 (Active moving bus location) -->
+                <div class="flex flex-col items-center">
+                  <div class="w-8 h-8 rounded-full bg-amber-500 text-slate-900 flex items-center justify-center text-xs font-bold ring-4 ring-white shadow-md animate-bounce">
+                    🚌
+                  </div>
+                  <span class="text-[11px] sm:text-xs font-bold mt-2 text-amber-800" data-hi="रास्ते में" data-en="On Road">रास्ते में</span>
+                  <span class="text-[9px] text-amber-700 font-semibold">2 किमी पीछे</span>
+                </div>
+
+                <!-- Stop 3 (User's stop) -->
+                <div class="flex flex-col items-center">
+                  <div class="w-8 h-8 rounded-full bg-brand-teal text-white flex items-center justify-center text-xs font-black ring-4 ring-white shadow">
+                    📍
+                  </div>
+                  <span class="text-[11px] sm:text-xs font-black mt-2 text-brand-teal" data-hi="सिंघिया" data-en="Singhia">सिंघिया</span>
+                  <span class="text-[9px] font-bold text-brand-teal bg-teal-50 px-1.5 rounded">आपका स्टॉप</span>
+                </div>
+
+                <!-- Stop 4 -->
+                <div class="flex flex-col items-center">
+                  <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center text-xs font-bold ring-4 ring-white">
+                    4
+                  </div>
+                  <span class="text-[11px] sm:text-xs font-bold mt-2 text-slate-500" data-hi="छपवा / बेतिया" data-en="Chapwa / Bettiah">छपवा / बेतिया</span>
+                  <span class="text-[9px] text-slate-400">अंतिम पड़ाव</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+            <span data-hi="ड्राइवर: मदन सिंह (फोन ऐप से कनेक्टेड)" data-en="Driver: Madan Singh (Connected via Driver App)">ड्राइवर: मदन सिंह (फोन ऐप से कनेक्टेड)</span>
+            <span class="text-brand-teal font-bold" data-hi="किराया: केवल ₹20" data-en="Fare: Just ₹20">किराया: केवल ₹20</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         8. PILOT ROUTES & COMING SOON SIGNUP
+         ======================================================== -->
+    <section id="routes" class="py-14 sm:py-20 bg-slate-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Left: Active Pilot Routes List -->
+          <div class="lg:col-span-7 space-y-6">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-brand-teal bg-teal-100/60 px-3 py-1 rounded-full border border-teal-200" data-hi="शुरुआती पायलट कॉरिडोर" data-en="Active Pilot Corridor">शुरुआती पायलट कॉरिडोर</span>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 font-hindi" data-hi="अभी इन मुख्य रूटों पर सेवा उपलब्ध है" data-en="Currently Live on These Corridors">
+                अभी इन मुख्य रूटों पर सेवा उपलब्ध है
+              </h2>
+              <p class="text-slate-600 text-xs sm:text-sm mt-1" data-hi="चंपारण के सबसे व्यस्त मार्गों से हमने शुरुआत की है:" data-en="Starting with East Champaran's busiest daily transit routes:">
+                चंपारण के सबसे व्यस्त मार्गों से हमने शुरुआत की है:
+              </p>
+            </div>
+
+            <div class="space-y-3">
+              
+              <!-- Route 1 -->
+              <div class="p-4 rounded-xl bg-white border border-slate-200 flex items-center justify-between shadow-2xs hover:border-brand-teal transition-all">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-teal-50 text-brand-teal flex items-center justify-center font-bold text-lg">
+                    🚌
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-slate-900 text-sm sm:text-base">मोतिहारी ➔ छतौनी ➔ सिंघिया ➔ छपवा ➔ बेतिया</h3>
+                    <p class="text-xs text-slate-500" data-hi="हर 10-15 मिनट में बस एवं ऑटो उपलब्ध" data-en="Buses and Autos every 10-15 mins">हर 10-15 मिनट में बस एवं ऑटो उपलब्ध</p>
+                  </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800 uppercase tracking-wider">LIVE</span>
+              </div>
+
+              <!-- Route 2 -->
+              <div class="p-4 rounded-xl bg-white border border-slate-200 flex items-center justify-between shadow-2xs hover:border-brand-teal transition-all">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-amber-50 text-brand-saffronDark flex items-center justify-center font-bold text-lg">
+                    🛺
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-slate-900 text-sm sm:text-base">छतौनी बस स्टैंड ➔ सिंघिया गुमटी ➔ पिपरा कोठी</h3>
+                    <p class="text-xs text-slate-500" data-hi="लोकल शेयरिंग ऑटो व ई-रिक्शा" data-en="Shared Auto & E-Rickshaws">लोकल शेयरिंग ऑटो व ई-रिक्शा</p>
+                  </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800 uppercase tracking-wider">LIVE</span>
+              </div>
+
+              <!-- Route 3 -->
+              <div class="p-4 rounded-xl bg-white border border-slate-200 flex items-center justify-between shadow-2xs hover:border-brand-teal transition-all">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center font-bold text-lg">
+                    🚕
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-slate-900 text-sm sm:text-base">मोतिहारी बलुआ चौक ➔ सुगौली ➔ रक्सौल बॉर्डर</h3>
+                    <p class="text-xs text-slate-500" data-hi="शेयरिंग टैक्सी, बोलेरो और मिनी बस" data-en="Shared Taxis, Bolero & Mini Buses">शेयरिंग टैक्सी, बोलेरो और मिनी बस</p>
+                  </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-black bg-amber-100 text-amber-900 uppercase tracking-wider" data-hi="परीक्षण चालू" data-en="TESTING">परीक्षण चालू</span>
+              </div>
+
+              <!-- Route 4 (Upcoming) -->
+              <div class="p-4 rounded-xl bg-slate-100/70 border border-dashed border-slate-300 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-lg">
+                    🔜
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-slate-700 text-sm sm:text-base">मोतिहारी ➔ अरेराज ➔ हरसिद्धि रूट</h3>
+                    <p class="text-xs text-slate-500" data-hi="ड्राइवर भाइयों का पंजीकरण प्रगति पर" data-en="Driver on-boarding in progress">ड्राइवर भाइयों का पंजीकरण प्रगति पर</p>
+                  </div>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200 text-slate-600" data-hi="जल्द आ रहा है" data-en="SOON">जल्द आ रहा है</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right: Request Route in Your Area -->
+          <div class="lg:col-span-5 bg-white p-6 sm:p-7 rounded-3xl border border-slate-200 shadow-sm">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xl">🗺️</span>
+              <h3 class="font-bold text-slate-900 text-lg sm:text-xl font-hindi" data-hi="अपने गांव/कस्बे में शुरू करवाएं" data-en="Bring It To Your Route">
+                अपने गांव/कस्बे में शुरू करवाएं
+              </h3>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 mb-5 leading-relaxed" data-hi="यदि आपका रूट अभी चालू नहीं है, तो अपना नंबर और रूट बताएं। 50 अनुरोध मिलते ही हम वहां गाड़ियां जोड़ देंगे!" data-en="Tell us your route. Once we get 50 requests from your area, we will onboard your local drivers!">
+              यदि आपका रूट अभी चालू नहीं है, तो अपना नंबर और रूट बताएं। 50 अनुरोध मिलते ही हम वहां गाड़ियां जोड़ देंगे!
+            </p>
+
+            <form id="route-request-form" class="space-y-3.5">
+              <div>
+                <label for="user-village" class="block text-xs font-bold text-slate-700 mb-1" data-hi="आपका गांव / चौक / कस्बा *" data-en="Your Village / Chowk *">आपका गांव / चौक / कस्बा *</label>
+                <input type="text" id="user-village" required placeholder="जैसे: पकड़ी दयाल, चकिया, केसरिया" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-300 focus-ring bg-slate-50 focus:bg-white transition-all" />
+              </div>
+
+              <div>
+                <label for="user-target-route" class="block text-xs font-bold text-slate-700 mb-1" data-hi="कहाँ से कहाँ तक जाते हैं? *" data-en="From Where to Where? *">कहाँ से कहाँ तक जाते हैं? *</label>
+                <input type="text" id="user-target-route" required placeholder="जैसे: अरेराज से मोतिहारी" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-300 focus-ring bg-slate-50 focus:bg-white transition-all" />
+              </div>
+
+              <div>
+                <label for="user-phone" class="block text-xs font-bold text-slate-700 mb-1" data-hi="मोबाइल नंबर (व्हाट्सएप) *" data-en="Mobile Number (WhatsApp) *">मोबाइल नंबर (व्हाट्सएप) *</label>
+                <input type="tel" id="user-phone" required pattern="[0-9]{10}" placeholder="10 अंकों का मोबाइल नंबर" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-300 focus-ring bg-slate-50 focus:bg-white transition-all" />
+              </div>
+
+              <button type="submit" class="min-touch w-full mt-2 py-3 px-4 rounded-xl bg-brand-teal hover:bg-brand-tealDark text-white font-bold text-sm shadow-sm transition-all focus-ring active:scale-98">
+                <span data-hi="रूट शुरू करने का अनुरोध भेजें" data-en="Request This Route">रूट शुरू करने का अनुरोध भेजें</span>
+              </button>
+            </form>
+
+            <div id="route-form-success" class="hidden mt-4 p-3 bg-emerald-50 border border-emerald-300 text-emerald-800 rounded-xl text-xs font-semibold text-center">
+              🎉 धन्यवाद! आपके इलाके का अनुरोध दर्ज कर लिया गया है। जैसे ही यह रूट चालू होगा आपको WhatsApp पर संदेश मिलेगा।
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         9. DRIVER SIGN-UP FORM
+         ======================================================== -->
+    <section id="driver-signup" class="py-14 sm:py-20 bg-amber-50/50 border-t border-amber-200/60">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        
+        <div class="bg-white rounded-3xl p-6 sm:p-10 border border-amber-200 shadow-lg">
+          
+          <div class="text-center max-w-xl mx-auto mb-8">
+            <span class="inline-block p-2 rounded-2xl bg-amber-100 text-brand-saffronDark text-2xl mb-2">🤝</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-hindi" data-hi="ड्राइवर / मालिक भाई आज ही जुड़ें" data-en="Driver / Vehicle Owner Registration">
+              ड्राइवर / मालिक भाई आज ही जुड़ें
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1.5" data-hi="फ्री में ऐप पर अपनी गाड़ी जोड़ें। खाली फेरा बंद करें और हर चक्कर में अतिरिक्त आमदनी पाएं।" data-en="Register free. Get steady passengers at every local stop. Takes 2 minutes.">
+              फ्री में ऐप पर अपनी गाड़ी जोड़ें। खाली फेरा बंद करें और हर चक्कर में अतिरिक्त आमदनी पाएं।
+            </p>
+          </div>
+
+          <form id="driver-registration-form" class="space-y-4">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Driver Name -->
+              <div>
+                <label for="driver-name" class="block text-xs font-bold text-slate-700 mb-1" data-hi="आपका पूरा नाम *" data-en="Full Name *">आपका पूरा नाम *</label>
+                <input type="text" id="driver-name" required placeholder="जैसे: रमेश कुमार राय" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-300 focus-ring bg-slate-50 focus:bg-white" />
+              </div>
+
+              <!-- Mobile Number -->
+              <div>
+                <label for="driver-mobile" class="block text-xs font-bold text-slate-700 mb-1" data-hi="मोबाइल नंबर (OTP के लिए) *" data-en="Mobile Number *">मोबाइल नंबर (OTP के लिए) *</label>
+                <input type="tel" id="driver-mobile" required pattern="[0-9]{10}" placeholder="10 डिजिट का मोबाइल नंबर" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-300 focus-ring bg-slate-50 focus:bg-white" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Vehicle Type -->
+              <div>
+                <label for="driver-vehicle" class="block text-xs font-bold text-slate-700 mb-1" data-hi="गाड़ी का प्रकार चुनें *" data-en="Vehicle Type *">गाड़ी का प्रकार चुनें *</label>
+                <select id="driver-vehicle" required class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-300 focus-ring bg-slate-50 focus:bg-white">
+                  <option value="" disabled selected data-hi="-- चुनें --" data-en="-- Select --">-- चुनें --</option>
+                  <option value="bus" data-hi="🚌 बस (Bus)" data-en="Bus">🚌 बस (Bus)</option>
+                  <option value="auto" data-hi="🛺 शेयरिंग ऑटो / ई-रिक्शा (Auto / E-Rickshaw)" data-en="Auto / E-Rickshaw">🛺 शेयरिंग ऑटो / ई-रिक्शा</option>
+                  <option value="taxi" data-hi="🚕 टैक्सी / जीप / बोलेरो (Taxi / Commander)" data-en="Taxi / Jeep / Commander">🚕 टैक्सी / जीप / बोलेरो</option>
+                </select>
+              </div>
+
+              <!-- Route -->
+              <div>
+                <label for="driver-route" class="block text-xs font-bold text-slate-700 mb-1" data-hi="आपका मुख्य रूट *" data-en="Primary Route *">आपका मुख्य रूट *</label>
+                <input type="text" id="driver-route" required placeholder="जैसे: छतौनी से बेतिया वाया छपवा" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-300 focus-ring bg-slate-50 focus:bg-white" />
+              </div>
+            </div>
+
+            <!-- Home Village/Town -->
+            <div>
+              <label for="driver-town" class="block text-xs font-bold text-slate-700 mb-1" data-hi="आपका गांव या शहर (ठिकाना) *" data-en="Home Village or Town *">आपका गांव या शहर (ठिकाना) *</label>
+              <input type="text" id="driver-town" required placeholder="जैसे: छतौनी, मोतिहारी या सिंहिया" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-300 focus-ring bg-slate-50 focus:bg-white" />
+            </div>
+
+            <!-- Simple check -->
+            <div class="flex items-start gap-2.5 pt-1">
+              <input type="checkbox" id="driver-terms" required class="mt-1 w-4 h-4 rounded text-brand-teal focus:ring-brand-saffron border-slate-300" />
+              <label for="driver-terms" class="text-xs text-slate-600 leading-snug" data-hi="मैं पुष्टि करता हूँ कि मेरे पास वैध ड्राइविंग लाइसेंस और गाड़ी के वैध कागजात हैं।" data-en="I confirm I hold a valid driving license and required vehicle papers.">
+                मैं पुष्टि करता हूँ कि मेरे पास वैध ड्राइविंग लाइसेंस और गाड़ी के वैध कागजात हैं।
+              </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="min-touch w-full py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-brand-saffronDark text-slate-950 font-black text-base shadow-md transition-all focus-ring active:scale-98 flex items-center justify-center gap-2">
+              <span>🚀</span>
+              <span data-hi="ड्राइवर के रूप में जुड़ें (Join as Driver)" data-en="Join as Driver">ड्राइवर के रूप में जुड़ें (Join as Driver)</span>
+            </button>
+            <p class="text-[11px] text-center text-slate-500" data-hi="कोई शुल्क नहीं लिया जाता। हमारी टीम 24 घंटे में आपको फोन करेगी।" data-en="100% Free registration. Our field team in Motihari will contact you in 24 hours.">
+              कोई शुल्क नहीं लिया जाता। हमारी मोतिहारी टीम 24 घंटे में आपको फोन करेगी।
+            </p>
+          </form>
+
+          <!-- Driver Form Success Alert -->
+          <div id="driver-form-success" class="hidden mt-5 p-4 bg-emerald-100 border border-emerald-300 text-emerald-900 rounded-2xl text-center">
+            <span class="text-2xl block mb-1">🎉</span>
+            <h4 class="font-bold text-base" data-hi="पंजीकरण सफल रहा!" data-en="Registration Submitted!">पंजीकरण सफल रहा!</h4>
+            <p class="text-xs mt-1" data-hi="धन्यवाद साथी! मोतिहारी कार्यालय से हमारी टीम जल्द आपसे संपर्क कर आपके फोन में ड्राइवर ऐप चालू कराएगी।" data-en="Thank you! Our Motihari support team will call you shortly to activate your Driver App.">
+              धन्यवाद साथी! मोतिहारी कार्यालय से हमारी टीम जल्द आपसे संपर्क कर आपके फोन में ड्राइवर ऐप चालू कराएगी।
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         10. FAQ ACCORDION (5 Questions)
+         ======================================================== -->
+    <section id="faq" class="py-14 sm:py-20 bg-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        
+        <div class="text-center mb-12">
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-teal" data-hi="अक्सर पूछे जाने वाले सवाल" data-en="Frequently Asked Questions">अक्सर पूछे जाने वाले सवाल</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 font-hindi" data-hi="मन में कोई शंका है? जवाब यहाँ हैं" data-en="Have Questions? We Have Answers">
+            मन में कोई शंका है? जवाब यहाँ हैं
+          </h2>
+        </div>
+
+        <div class="space-y-3" id="faq-accordion">
+          
+          <!-- FAQ 1 -->
+          <div class="border border-slate-200 rounded-2xl overflow-hidden">
+            <button type="button" class="faq-btn w-full px-5 py-4 text-left font-bold text-slate-900 bg-slate-50/60 hover:bg-slate-100 flex items-center justify-between gap-4 transition-colors focus-ring" aria-expanded="false">
+              <span class="text-sm sm:text-base font-hindi" data-hi="1. क्या यात्रियों के लिए यह ऐप बिल्कुल फ्री है?" data-en="1. Is this app completely free for passengers?">1. क्या यात्रियों के लिए यह ऐप बिल्कुल फ्री है?</span>
+              <span class="faq-icon text-brand-teal text-xl font-bold transition-transform duration-200">+</span>
+            </button>
+            <div class="faq-content hidden px-5 py-4 text-xs sm:text-sm text-slate-600 bg-white border-t border-slate-100 leading-relaxed" data-hi="हाँ, यात्रियों के लिए यह 100% मुफ्त है। आपको बस, ऑटो या टैक्सी देखने के लिए एक भी रुपया नहीं देना है।" data-en="Yes, 100% free for travelers. You don't pay any fee to check live arrival times of buses, autos or taxis.">
+              हाँ, यात्रियों के लिए यह 100% मुफ्त है। आपको बस, ऑटो या टैक्सी देखने के लिए एक भी रुपया नहीं देना है।
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="border border-slate-200 rounded-2xl overflow-hidden">
+            <button type="button" class="faq-btn w-full px-5 py-4 text-left font-bold text-slate-900 bg-slate-50/60 hover:bg-slate-100 flex items-center justify-between gap-4 transition-colors focus-ring" aria-expanded="false">
+              <span class="text-sm sm:text-base font-hindi" data-hi="2. क्या यह ऐप कमजोर इंटरनेट (2G या स्लो 4G) पर काम करेगा?" data-en="2. Does it work on slow internet or 2G connections?">2. क्या यह ऐप कमजोर इंटरनेट (2G या स्लो 4G) पर काम करेगा?</span>
+              <span class="faq-icon text-brand-teal text-xl font-bold transition-transform duration-200">+</span>
+            </button>
+            <div class="faq-content hidden px-5 py-4 text-xs sm:text-sm text-slate-600 bg-white border-t border-slate-100 leading-relaxed" data-hi="बिल्कुल! हमने इसे बिहार के ग्रामीण इलाकों के कमजोर नेटवर्क को ध्यान में रखकर बनाया है। यह बहुत हल्का है और 2G सिग्नल पर भी तुरंत समय दिखा देता है।" data-en="Absolutely! Built specifically for rural Bihar, consuming minimal data and functioning seamlessly even on weak 2G signals.">
+              बिल्कुल! हमने इसे बिहार के ग्रामीण इलाकों के कमजोर नेटवर्क को ध्यान में रखकर बनाया है। यह बहुत हल्का है और 2G सिग्नल पर भी तुरंत समय दिखा देता है।
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="border border-slate-200 rounded-2xl overflow-hidden">
+            <button type="button" class="faq-btn w-full px-5 py-4 text-left font-bold text-slate-900 bg-slate-50/60 hover:bg-slate-100 flex items-center justify-between gap-4 transition-colors focus-ring" aria-expanded="false">
+              <span class="text-sm sm:text-base font-hindi" data-hi="3. यात्री की लोकेशन का क्या उपयोग होता है? क्या यह सुरक्षित है?" data-en="3. How is traveler location used? Is it safe?">3. यात्री की लोकेशन का क्या उपयोग होता है? क्या यह सुरक्षित है?</span>
+              <span class="faq-icon text-brand-teal text-xl font-bold transition-transform duration-200">+</span>
+            </button>
+            <div class="faq-content hidden px-5 py-4 text-xs sm:text-sm text-slate-600 bg-white border-t border-slate-100 leading-relaxed" data-hi="आपकी लोकेशन का इस्तेमाल केवल आपको आपके सबसे नजदीकी स्टॉप और गाड़ियों का सही समय बताने के लिए होता है। आपकी व्यक्तिगत जानकारी किसी के साथ साझा नहीं की जाती।" data-en="Your location is only used to find your nearest stop and show precise arrival countdowns. Your data is strictly private and secure.">
+              आपकी लोकेशन का इस्तेमाल केवल आपको आपके सबसे नजदीकी स्टॉप और गाड़ियों का सही समय बताने के लिए होता है। आपकी व्यक्तिगत जानकारी किसी के साथ साझा नहीं की जाती।
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="border border-slate-200 rounded-2xl overflow-hidden">
+            <button type="button" class="faq-btn w-full px-5 py-4 text-left font-bold text-slate-900 bg-slate-50/60 hover:bg-slate-100 flex items-center justify-between gap-4 transition-colors focus-ring" aria-expanded="false">
+              <span class="text-sm sm:text-base font-hindi" data-hi="4. ड्राइवर भाई कैसे जुड़ सकते हैं? क्या कोई फीस लगती है?" data-en="4. How do drivers join? Is there any fee?">4. ड्राइवर भाई कैसे जुड़ सकते हैं? क्या कोई फीस लगती है?</span>
+              <span class="faq-icon text-brand-teal text-xl font-bold transition-transform duration-200">+</span>
+            </button>
+            <div class="faq-content hidden px-5 py-4 text-xs sm:text-sm text-slate-600 bg-white border-t border-slate-100 leading-relaxed" data-hi="ड्राइवर पेज पर दिए गए फॉर्म को भरकर या सीधे हमारे हेल्पलाइन नंबर पर व्हाट्सएप करके जुड़ सकते हैं। पायलट फेज में जुड़ना पूर्णतः निशुल्क है।" data-en="Drivers can fill the form above or WhatsApp our helpline. Onboarding during this pilot phase is 100% free with no hidden charges.">
+              ड्राइवर पेज पर दिए गए फॉर्म को भरकर या सीधे हमारे हेल्पलाइन नंबर पर व्हाट्सएप करके जुड़ सकते हैं। पायलट फेज में जुड़ना पूर्णतः निशुल्क है।
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="border border-slate-200 rounded-2xl overflow-hidden">
+            <button type="button" class="faq-btn w-full px-5 py-4 text-left font-bold text-slate-900 bg-slate-50/60 hover:bg-slate-100 flex items-center justify-between gap-4 transition-colors focus-ring" aria-expanded="false">
+              <span class="text-sm sm:text-base font-hindi" data-hi="5. अभी कौन-से रूट चालू हैं और नए रूट कब जुड़ेंगे?" data-en="5. Which routes are currently live and when will new ones open?">5. अभी कौन-से रूट चालू हैं और नए रूट कब जुड़ेंगे?</span>
+              <span class="faq-icon text-brand-teal text-xl font-bold transition-transform duration-200">+</span>
+            </button>
+            <div class="faq-content hidden px-5 py-4 text-xs sm:text-sm text-slate-600 bg-white border-t border-slate-100 leading-relaxed" data-hi="अभी मोतिहारी-छतौनी-सिंघिया-छपवा-बेतिया कॉरिडोर पूरी तरह लाइव है। अगले महीने चकिया, रक्सौल और अरेराज रूट को जोड़ा जाएगा।" data-en="Motihari-Chatauni-Singhia-Chapwa-Bettiah corridor is currently live. Next month we will expand to Chakia, Raxaul and Areraj routes.">
+              अभी मोतिहारी-छतौनी-सिंघिया-छपवा-बेतिया कॉरिडोर पूरी तरह लाइव है। अगले महीने चकिया, रक्सौल और अरेराज रूट को जोड़ा जाएगा।
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Download Sticky App Banner -->
+    <section id="download" class="py-12 bg-brand-tealSurface border-t border-teal-200/60">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-hindi" data-hi="आज ही अपने फोन में डाउनलोड करें" data-en="Download On Your Phone Today">आज ही अपने फोन में डाउनलोड करें</h2>
+        <p class="text-slate-600 text-xs sm:text-sm mt-1 max-w-lg mx-auto" data-hi="पूर्वी चंपारण में सफर करने का नया और तनावमुक्त तरीका।" data-en="The smartest, stress-free way to travel across East Champaran.">पूर्वी चंपारण में सफर करने का नया और तनावमुक्त तरीका।</p>
+        
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-4">
+          <button type="button" onclick="alert('Google Play Store link will go live upon official app launch in Motihari. Sign up above to get early APK access!')" class="min-touch inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-brand-teal text-white font-bold text-sm shadow hover:bg-brand-tealDark transition-all focus-ring active:scale-95">
+            <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3.609 1.814L13.792 12 3.61 22.186a1.94 1.94 0 0 1-.61-1.427V3.241c0-.547.224-1.05.609-1.427zm11.3 11.3l2.25 2.25-11.83 6.83 9.58-9.08zm0-2.228L5.33 1.806l11.83 6.83-2.251 2.25zM17.87 11.23l2.67 1.54a.89.89 0 0 1 0 1.54l-2.67 1.54-1.89-1.89 1.89-1.19z"/>
+            </svg>
+            <span class="text-left">
+              <span class="block text-[10px] text-teal-100 uppercase">Google Play</span>
+              <span class="text-sm font-extrabold" data-hi="डाउनलोड करें (Free)" data-en="Download APK (Free)">डाउनलोड करें (Free)</span>
+            </span>
+          </button>
+
+          <a href="https://wa.me/919876543210?text=Hello%20Gaadi%20Kab%20Aayegi%20Team,%20please%20send%20app%20link" target="_blank" rel="noopener noreferrer" class="min-touch inline-flex items-center gap-2.5 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-bold text-sm shadow hover:bg-emerald-700 transition-all focus-ring active:scale-95">
+            <!-- WhatsApp SVG -->
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span data-hi="व्हाट्सएप पर लिंक मंगाएं" data-en="Get Link on WhatsApp">व्हाट्सएप पर लिंक मंगाएं</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================
+       11. FOOTER
+       ======================================================== -->
+  <footer class="bg-slate-900 text-slate-300 pt-12 pb-8 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-slate-800">
+        
+        <!-- Col 1: About App -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-brand-teal flex items-center justify-center text-brand-saffron font-bold text-lg">
+              🚌
+            </div>
+            <span class="font-extrabold text-white text-base font-hindi">गाड़ी कब आएगी?</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed" data-hi="पूर्वी चंपारण, बिहार के यात्रियों और वाहन चालकों के लिए समर्पित पहला स्थानीय सार्वजनिक परिवहन लाइव ट्रैकिंग मंच।" data-en="Dedicated local public transit ETA tracker for daily commuters in East Champaran, Bihar.">
+            पूर्वी चंपारण, बिहार के यात्रियों और वाहन चालकों के लिए समर्पित पहला स्थानीय सार्वजनिक परिवहन लाइव ट्रैकिंग मंच।
+          </p>
+          <p class="text-[11px] text-amber-400 font-medium">📍 मोतिहारी • बेतिया • छतौनी • सिंघिया • छपवा</p>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-3" data-hi="त्वरित लिंक" data-en="Quick Links">त्वरित लिंक</h3>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#how-it-works" class="hover:text-brand-saffron transition-colors" data-hi="यात्री गाइड" data-en="Passenger Guide">यात्री गाइड</a></li>
+            <li><a href="#for-drivers" class="hover:text-brand-saffron transition-colors" data-hi="चालक भाई जुड़ें" data-en="Driver Onboarding">चालक भाई जुड़ें</a></li>
+            <li><a href="#routes" class="hover:text-brand-saffron transition-colors" data-hi="सक्रिय रूट सूची" data-en="Active Pilot Routes">सक्रिय रूट सूची</a></li>
+            <li><a href="#faq" class="hover:text-brand-saffron transition-colors" data-hi="अक्सर पूछे जाने वाले सवाल" data-en="Help & FAQ">अक्सर पूछे जाने वाले सवाल</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Direct Contact / Helpline -->
+        <div>
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-3" data-hi="संपर्क व सहायता" data-en="Contact & Support">संपर्क व सहायता</h3>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-center gap-2">
+              <span class="text-brand-saffron">📞</span>
+              <a href="tel:+919876543210" class="hover:text-white font-mono">+91 98765 43210</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-emerald-400">💬</span>
+              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="hover:text-white">व्हाट्सएप सहायता (WhatsApp)</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-brand-saffron">✉️</span>
+              <a href="mailto:support@gaadikabaayegi.in" class="hover:text-white">support@gaadikabaayegi.in</a>
+            </li>
+            <li class="text-[11px] text-slate-400 pt-1">
+              छतौनी बस स्टैंड रोड, मोतिहारी, पूर्वी चंपारण - 845401
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Trust & Language Notice -->
+        <div>
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-3" data-hi="विश्वास और सुरक्षा" data-en="Trust & Privacy">विश्वास और सुरक्षा</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-3" data-hi="यह सेवा बिहार सरकार के नियमों और स्थानीय परिवहन संघों के सहयोग से पायलट रूप में संचालित है।" data-en="Operated as a local pilot initiative aligned with district transportation guidelines.">
+            यह सेवा बिहार के स्थानीय परिवहन संघों के सहयोग से पायलट रूप में संचालित है।
+          </p>
+          <div class="flex items-center gap-3 text-xs text-slate-400">
+            <a href="#" onclick="alert('गोपनीयता नीति (Privacy Policy): आपका फोन नंबर और डेटा केवल यात्रा सेवा के लिए सुरक्षित रखा जाता है।')" class="hover:underline" data-hi="गोपनीयता नीति" data-en="Privacy Policy">गोपनीयता नीति</a>
+            <span>•</span>
+            <a href="#" onclick="alert('नियम एवं शर्तें: यह ऐप अनुमानित समय (ETA) प्रदान करता है जो मौसम और सड़क स्थिति पर निर्भर करता है।')" class="hover:underline" data-hi="नियम व शर्तें" data-en="Terms of Use">नियम व शर्तें</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+        <p>© <span id="current-year">2025</span> Gaadi Kab Aayegi (गाड़ी कब आएगी). सर्वाधिकार सुरक्षित।</p>
+        <p class="text-[11px]" data-hi="चंपारण के यात्रियों के प्यार से निर्मित ❤️" data-en="Made with pride for Champaran, Bihar ❤️">चंपारण के यात्रियों के प्यार से निर्मित ❤️</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       JAVASCRIPT: Bilingual Toggle, Accordions, Forms, Simulation
+       ======================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Set current year in footer
+      const yearEl = document.getElementById('current-year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // 2. Language Switcher (Hindi <-> English)
+      let currentLang = 'hi';
+      const langToggleBtn = document.getElementById('lang-toggle-btn');
+      const langLabel = document.getElementById('lang-label');
+      const translatableElements = document.querySelectorAll('[data-hi][data-en]');
+
+      function setLanguage(lang) {
+        currentLang = lang;
+        if (lang === 'en') {
+          langLabel.textContent = 'हिंदी';
+          document.documentElement.lang = 'en';
+        } else {
+          langLabel.textContent = 'English';
+          document.documentElement.lang = 'hi';
+        }
+
+        translatableElements.forEach(el => {
+          const text = el.getAttribute(`data-${lang}`);
+          if (text) {
+            // Check if element is an input placeholder
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+              el.placeholder = text;
+            } else {
+              el.textContent = text;
+            }
+          }
+        });
+      }
+
+      if (langToggleBtn) {
+        langToggleBtn.addEventListener('click', () => {
+          const nextLang = currentLang === 'hi' ? 'en' : 'hi';
+          setLanguage(nextLang);
+        });
+      }
+
+      // 3. FAQ Accordion Functionality
+      const faqButtons = document.querySelectorAll('.faq-btn');
+      faqButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          const content = btn.nextElementSibling;
+          const icon = btn.querySelector('.faq-icon');
+
+          // Close all other accordions
+          faqButtons.forEach(otherBtn => {
+            if (otherBtn !== btn) {
+              otherBtn.setAttribute('aria-expanded', 'false');
+              otherBtn.nextElementSibling.classList.add('hidden');
+              const otherIcon = otherBtn.querySelector('.faq-icon');
+              if (otherIcon) {
+                otherIcon.textContent = '+';
+                otherIcon.style.transform = 'rotate(0deg)';
+              }
+            }
+          });
+
+          // Toggle current
+          if (isExpanded) {
+            btn.setAttribute('aria-expanded', 'false');
+            content.classList.add('hidden');
+            if (icon) {
+              icon.textContent = '+';
+              icon.style.transform = 'rotate(0deg)';
+            }
+          } else {
+            btn.setAttribute('aria-expanded', 'true');
+            content.classList.remove('hidden');
+            if (icon) {
+              icon.textContent = '−';
+              icon.style.transform = 'rotate(180deg)';
+            }
+          }
+        });
+      });
+
+      // 4. Route Request Form Handling
+      const routeForm = document.getElementById('route-request-form');
+      const routeSuccess = document.getElementById('route-form-success');
+      if (routeForm) {
+        routeForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const phoneInput = document.getElementById('user-phone');
+          if (phoneInput && phoneInput.value.length < 10) {
+            alert(currentLang === 'hi' ? 'कृपया सही 10 अंकों का मोबाइल नंबर डालें।' : 'Please enter a valid 10-digit mobile number.');
+            return;
+          }
+          // Simulate successful backend submission
+          routeSuccess.classList.remove('hidden');
+          routeForm.reset();
+          setTimeout(() => {
+            routeSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 100);
+        });
+      }
+
+      // 5. Driver Sign-up Form Handling
+      const driverForm = document.getElementById('driver-registration-form');
+      const driverSuccess = document.getElementById('driver-form-success');
+      if (driverForm) {
+        driverForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const mobile = document.getElementById('driver-mobile');
+          if (mobile && mobile.value.length < 10) {
+            alert(currentLang === 'hi' ? 'कृपया 10 अंकों का वैध फोन नंबर दर्ज करें।' : 'Please enter a valid 10-digit mobile number.');
+            return;
+          }
+          driverSuccess.classList.remove('hidden');
+          driverForm.reset();
+          driverSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      }
+
+      // 6. Live ETA dynamic countdown simulation in example section
+      let etaMinutes = 8;
+      const etaDisplay = document.getElementById('live-eta-counter');
+      if (etaDisplay) {
+        setInterval(() => {
+          etaMinutes -= 1;
+          if (etaMinutes < 2) etaMinutes = 9;
+          etaDisplay.textContent = currentLang === 'hi' ? `${etaMinutes} मिनट` : `${etaMinutes} mins`;
+        }, 12000);
+      }
+    });
+  </script>
+</body>
+</html>
